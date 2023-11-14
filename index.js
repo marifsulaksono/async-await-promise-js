@@ -31,13 +31,17 @@ function getPhotoProfile(userId) {
 }
 
 async function userProfile() {
-    const { token } = await login("arif");
-    const { userId } = await getUser(token);
-    const { photo } = await getPhotoProfile(userId);
+    try {
+        const { token } = await login("arif");
+        const { userId } = await getUser(token);
+        const { photo } = await getPhotoProfile(userId);
 
-    console.log("Token : ", token)
-    console.log("User ID : ", userId)
-    console.log("Photo profile : ", photo)
+        console.log("Token : ", token)
+        console.log("User ID : ", userId)
+        console.log("Photo profile : ", photo)
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 userProfile();
